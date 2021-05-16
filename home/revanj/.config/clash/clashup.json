@@ -1,0 +1,13 @@
+{
+    "http_port": 7890,
+    "socks5_port": 7891,
+    "redir_port": 7892, 
+    "mixed_port": 10808,
+    "allow_lan": true,
+    "external_controller": "127.0.0.1:9090",
+    "subscribe_url": "https://subcon.dlj.tf/sub?target=clash&url=https%3A%2F%2Fsub.v2club.top%2Fapi%2Fv1%2Fclient%2Fsubscribe%3Ftoken%3Ddd602e205d4a4cacd4538d5669df3eaf&insert=false&config=https%3A%2F%2Fraw.githubusercontent.com%2FACL4SSR%2FACL4SSR%2Fmaster%2FClash%2Fconfig%2FACL4SSR_Online.ini",
+    "is_subscribe_banned": false, 
+    "custom_rules": [],
+    "mmdb_file_url": "http://www.ideame.top/mmdb/Country.mmdb",
+    "mmdb_version_url": "http://www.ideame.top/mmdb/version"
+}
