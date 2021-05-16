@@ -214,4 +214,11 @@ bar {
     }
 }
 
+# font
+font pango:SourceCodePro Medium 11
+
+# border
+default_border none
+# gaps
+gaps inner 5
 include /etc/sway/config.d/*
