@@ -206,6 +206,7 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
+    icon_theme Adwaita
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
@@ -226,3 +227,9 @@ default_border none
 # gaps
 gaps inner 5
 include /etc/sway/config.d/*
+
+# import variable into D-Bus
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# icon theme
+
