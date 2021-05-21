@@ -49,12 +49,12 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-   input "1739:52774:DELL0A7D:00_06CB:CE26_Touchpad" {
-       dwt enabled
-       tap enabled
-       # natural_scroll enabled
-       middle_emulation enabled
-   }
+input "1739:52774:DELL0A7D:00_06CB:CE26_Touchpad" {
+    dwt enabled
+    tap enabled
+    # natural_scroll enabled
+    middle_emulation enabled
+}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -83,10 +83,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym Mod4+shift+e exec swaynag -t warning \
+    bindsym $mod+shift+e exec swaynag -t warning \
  	-m 'What do you want to do?' \
  	-b 'Poweroff' 'systemctl poweroff' \
- 	-b 'Reboot' 'systemctl reboot'
+ 	-b 'Reboot' 'systemctl reboot' \
+	-b 'Logout' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -231,5 +232,7 @@ include /etc/sway/config.d/*
 # import variable into D-Bus
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-# icon theme
-
+# screencapture to clipboard
+# bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy --type image/png
+# screencapture to screenshot.png (because pcmanfm don't seem to support wl-clipboard
+bindsym $mod+p exec grim -g "$(slurp)" screenshot.png
