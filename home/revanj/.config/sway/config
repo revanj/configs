@@ -205,10 +205,10 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-    icon_theme Adwaita
 
+bar {
+    swaybar_command waybar
+    position top
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
@@ -236,3 +236,26 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 # bindsym $mod+p exec grim -g "$(slurp)" - | wl-copy --type image/png
 # screencapture to screenshot.png (because pcmanfm don't seem to support wl-clipboard
 bindsym $mod+p exec grim -g "$(slurp)" screenshot.png
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# restart pulseaudio to make it actually work
+exec systemctl --user restart pipewire pipewire-pulse
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Arc-Dark'
+    gsettings set $gnome-schema icon-theme 'Arc'
+    gsettings set $gnome-schema cursor-theme 'Arc'
+    gsettings set $gnome-schema font-name 'Sans 11'
+}
+
